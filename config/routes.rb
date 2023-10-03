@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
 
   root to: 'products#index'
-   get 'about', to: 'about#index'
+  get 'about', to: 'about#index'
+   # config/routes.rb
+  get '/signup', to: 'users#new'     # Display the registration form
+  post '/signup', to: 'users#create'  # Handle form submissions for user registration
+  
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+
+  delete '/logout', to: 'sessions#destroy', as: :logout
+
+  # For user registration and login
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
+
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]

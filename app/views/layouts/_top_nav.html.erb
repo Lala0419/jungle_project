@@ -67,6 +67,11 @@
         <li class="nav-item">
           <%= link_to 'About Us', about_path, class: "nav-link" %>
         </li>
+      <!-- Other navigation links -->
+        <% if logged_in? %>
+          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+        <% end %>
+
       </ul>
     </div>
   </div>
