@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
   pp @user
     if @user.save 
+      # the password has to be longer than 6 letters
       session[:user_id] = @user.id 
       redirect_to "/" # Redirect to the user's profile page (or another page)
     else
